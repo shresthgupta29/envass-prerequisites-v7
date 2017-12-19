@@ -1,0 +1,40 @@
+#!/bin/bash
+ 
+# Clean kills all processes in /u01 
+ps aux | grep /u01 | awk '{print $2}' | xargs kill 
+
+# Clean kills all processes in /u02 
+ps aux | grep /u02 | awk '{print $2}' | xargs kill
+
+# Clean kills all processes in /scratch except for your VNC session process
+ps aux | grep /scratch | grep -v Xvnc | awk '{print $2}' | xargs kill
+
+# Waits a bit
+sleep 2
+
+# Force kills all processes in /u01
+ps aux | grep /u01 | awk '{print $2}' | xargs kill -9
+
+# Force kills all processes in /u01
+ps aux | grep /u02 | awk '{print $2}' | xargs kill -9
+
+# Force kills all processes in /scratch except for your VNC session processes
+ps aux | grep /scratch | grep -v Xvnc | awk '{print $2}' | xargs kill -9
+ 
+# Removes everything in /u01
+rm -rf /u01/*
+
+# Removes everything in /scratch/u01
+rm -rf /scratch/u01
+
+# Removes everything in /u02, commented for now to test shared storage
+#rm -rf /u02/*
+
+# Removes everything in /scratch/u02, commented for now to test shared storage
+#rm -rf /scratch/u02
+ 
+# Removes everything in /tmp
+rm -rf /tmp/*
+
+# Removes oraInst.loc
+rm -f /etc/oraInst.loc
