@@ -271,7 +271,7 @@ try:
         subprocess.call('rmdir /u01/app/stage',shell=True)
         subprocess.call('mkdir -p /u01/app/stage',shell=True)
         subprocess.call('chown -R pgbu_apps:pgbu_apps /u01/app',shell=True)
-	    subprocess.call('yum -y install expect*',shell=True)
+	subprocess.call('yum -y install expect*',shell=True)
 except OSError as e:
         print(e)
 
