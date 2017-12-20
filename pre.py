@@ -162,26 +162,22 @@ except OSError as e:
 
 print("\n\n######### Checkpoint 3 ############\n\n")
 loc=""
-var2 = raw_input("Want me to unzip for you ?(y/n)\n")
-if var2=='y':
-        var = str(time.gmtime()[2])+'-'+str(time.gmtime()[1])
-        loc = '/chef'+var
-        zip_split = zip_path.split('/')
-        zip_file = zip_split[len(zip_split)-1]
-        os.chdir('/')
-        try:
-                subprocess.call('rm -rf chef'+var+'',shell=True)
-                subprocess.call('mkdir chef'+var+'',shell=True)
-                subprocess.call('cp '+zip_path+' /chef'+var+'',shell=True)
-                os.chdir(loc)
-                subprocess.call('unzip '+zip_file,shell=True)
-                print("\nChef location is ---->"+loc+'\n')
-        except OSError as e:
-                print(e)
-                exit()
-        chef_path=loc+'/ChefOrchestration'  
-else:
-        pass
+var = str(time.gmtime()[2])+'-'+str(time.gmtime()[1])
+loc = '/chef'+var
+zip_split = zip_path.split('/')
+zip_file = zip_split[len(zip_split)-1]
+os.chdir('/')
+try:
+        subprocess.call('rm -rf chef'+var+'',shell=True)
+        subprocess.call('mkdir chef'+var+'',shell=True)
+        subprocess.call('cp '+zip_path+' /chef'+var+'',shell=True)
+        os.chdir(loc)
+        subprocess.call('unzip '+zip_file,shell=True)
+        print("\nChef location is ---->"+loc+'\n')
+except OSError as e:
+                        print(e)
+                        exit()
+chef_path=loc+'/ChefOrchestration'  
 
 print("\n\n######### Checkpoint 4 ############\n\n")
 
