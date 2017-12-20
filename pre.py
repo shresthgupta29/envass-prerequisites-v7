@@ -164,7 +164,7 @@ print("\n\n######### Checkpoint 3 ############\n\n")
 loc=""
 var2 = raw_input("Want me to unzip for you ?(y/n)\n")
 if var2=='y':
-        var = time.strftime("%d-%m")
+        var = str(time.gmtime()[2])+'-'+str(time.gmtime()[1])
         loc = '/chef'+var
         zip_split = zip_path.split('/')
         zip_file = zip_split[len(zip_split)-1]
